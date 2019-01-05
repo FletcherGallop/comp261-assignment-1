@@ -1,0 +1,50 @@
+roadid	type	label    	city    	oneway	speed	roadclass	notforcar	notforpede	notforbicy
+100	6	airedale st	auckland	0	2	0	0	0	0
+9787	1	northwestern motorway	auckland	1	6	4	0	1	1
+13107	1	northwestern motorway	auckland	0	6	4	0	1	1
+13379	1	patiki rd exit 12	auckland	1	4	4	0	1	1
+13466	9	state highway 16	auckland	1	4	4	0	1	1
+13515	5	patiki rd	avondale	0	2	1	0	0	0
+13826	1	rosebank rd exit 11	auckland	1	4	4	0	1	1
+15328	5	rosebank rd	avondale	0	2	1	0	0	0
+15649	9	state highway 16	auckland	1	4	4	0	1	1
+15799	5	new north rd	avondale	0	2	1	0	0	0
+15884	6	herdman st	waterview	0	2	0	0	0	0
+15965	9	state highway 16	auckland	1	4	4	0	1	1
+16060	6	cowley st	waterview	0	2	0	0	0	0
+16270	6	kiwi rd	point chevalier	0	2	0	0	0	0
+16450	6	tui st	point chevalier	0	2	0	0	0	0
+16473	6	walmer rd	point chevalier	0	2	0	0	0	0
+16501	4	carrington rd	point chevalier	0	2	2	0	0	0
+16598	6	moa rd	point chevalier	0	2	0	0	0	0
+16687	6	kanuka st	point chevalier	0	2	0	0	0	0
+16769	6	kanuka st	point chevalier	0	2	0	0	0	0
+16770	6	riro st	point chevalier	0	2	0	0	0	0
+16830	6	premier ave	point chevalier	0	2	0	0	0	0
+16939	6	riro st	point chevalier	0	2	0	0	0	0
+17006	6	kettle st	point chevalier	0	2	0	0	0	0
+17021	6	premier ave	point chevalier	0	2	0	0	0	0
+17134	4	mt albert rd	mt albert	0	2	2	0	0	0
+17146	6	premier ave	point chevalier	0	2	0	0	0	0
+17198	6	pasadena ave	point chevalier	0	2	0	0	0	0
+17199	6	premier ave	point chevalier	0	2	0	0	0	0
+17279	6	chatham ave	mt albert	0	2	0	0	0	0
+17312	6	manor pl	point chevalier	0	2	0	0	0	0
+17313	6	pasadena ave	point chevalier	0	2	0	0	0	0
+17314	6	moray pl	point chevalier	0	2	0	0	0	0
+17358	6	verona ave	mt albert	0	2	0	0	0	0
+17388	6	motions rd	western springs	0	2	0	0	0	0
+17389	6	old mill rd	western springs	0	2	0	0	0	0
+17483	6	alexis ave	mt albert	0	2	0	0	0	0
+17487	6	ranleigh rd	mt albert	0	2	0	0	0	0
+17488	6	summit dr	mt albert	0	2	0	0	0	0
+17522	6	martin ave	mt albert	0	2	0	0	0	0
+17559	6	wesley ave	mt albert	0	2	0	0	0	0
+17560	6	caughey pl	mt albert	0	2	0	0	0	0
+17562	6	martin ave	mt albert	0	2	0	0	0	0
+17612	6	maybeck rd	mt albert	0	2	0	0	0	0
+17614	6	rossgrove tce	mt albert	0	2	0	0	0	0
+17615	6	martin ave	mt albert	0	2	0	0	0	0
+17646	6	martin ave	mt albert	0	2	0	0	0	0
+17694	6	linwood ave	mt albert	0	2	0	0	0	0
+17696	6	doreen ave	mt albert	0	2	0	0	0	0
