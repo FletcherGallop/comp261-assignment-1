@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Graph {
-    static ArrayList<Segment> segments;
+	static ArrayList<Segment> segments;
     static Map<Integer,Road> roads;
     static Map<Integer,Node> nodes;
 
@@ -28,6 +28,16 @@ public class Graph {
 ////        System.out.println(segments.get(0).toString());
 //
 //    }
+    
+    public Graph(String segFilePath, String roadFilePath, String nodeFilePath) {
+//    		roads = importRoadData("data/test/roadDataTest.tab");
+//    		nodes = importNodeData("data/test/nodeTest.tab");
+//    		segments = importSegmentData("data/test/roadSegTest.tab");
+    		roads = importRoadData(segFilePath);
+		nodes = importNodeData(roadFilePath);
+		segments = importSegmentData(nodeFilePath);
+		
+	}
 
     private static ArrayList<Segment> importSegmentData(String segFilePath) {
         //Sourced from Stack overflow Q# 19575308
@@ -187,8 +197,8 @@ public class Graph {
                     nodeData = lineJustFetched.split("\t");
                     
                     Node node;
-                    Location coords = new Location(Double.parseDouble(nodeData[1]),
-                    				   Double.parseDouble(nodeData[2]));
+                    Location coords = Location.newFromLatLon(Double.parseDouble(nodeData[2]),
+                    				   Double.parseDouble(nodeData[1]));
                     
                     node = new Node(Integer.parseInt(nodeData[0]),
                     				   coords
@@ -209,6 +219,12 @@ public class Graph {
 		
 		return null;
 	
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Graph [nodes=[" + nodes.size() + "], roads=[" + roads.size() + "], segments" + segments.size() + "]" + "]";
 	}
 
 	

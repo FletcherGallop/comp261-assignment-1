@@ -19,8 +19,9 @@ import java.util.Random;
  * @author tony
  */
 public class SquaresExample extends GUI {
+	
 	private static final int NUM_SQUARES = 10;
-	private static final int SQUARE_SIZE = 30;
+	private static final int SQUARE_SIZE = 20;
 
 	private final Random random = new Random();
 	private final List<Square> squares = new ArrayList<Square>();
@@ -95,7 +96,7 @@ public class SquaresExample extends GUI {
 
 		public void draw(Graphics g) {
 			g.setColor(color);
-			g.fillRect(x, y, SQUARE_SIZE, SQUARE_SIZE);
+			g.fillOval(x, y, SQUARE_SIZE, SQUARE_SIZE);
 		}
 
 		public boolean contains(int x, int y) {
