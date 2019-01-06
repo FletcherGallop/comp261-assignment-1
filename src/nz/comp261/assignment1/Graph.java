@@ -62,7 +62,8 @@ public class Graph {
                                         
                     for (int i = 4; i<segData.length; i++) { //get all coords
 //                    		coords.add(Float.parseFloat(roadData[i]));
-                    		coords.add(new Location(Double.parseDouble(segData[i]),Double.parseDouble(segData[i+1])));
+                    		Location fromLatLon = Location.newFromLatLon(Double.parseDouble(segData[i]),Double.parseDouble(segData[i+1]));
+                    		coords.add(fromLatLon);
                     		i++;
                     }
                     
@@ -198,7 +199,9 @@ public class Graph {
                     
                     Node node;
                     Location coords = Location.newFromLatLon(Double.parseDouble(nodeData[2]),
-                    				   Double.parseDouble(nodeData[1]));
+                    				   Double.parseDouble(nodeData[1])); //Now in dist
+                    
+//                    System.out.println(coords);
                     
                     node = new Node(Integer.parseInt(nodeData[0]),
                     				   coords
@@ -224,7 +227,7 @@ public class Graph {
 	
 	@Override
 	public String toString() {
-		return "Graph [nodes=[" + nodes.size() + "], roads=[" + roads.size() + "], segments" + segments.size() + "]" + "]";
+		return "Graph [nodes=[" + nodes.size() + "], roads=[" + roads.size() + "], segments=[" + segments.size() + "]" + "]";
 	}
 
 	

@@ -11,6 +11,7 @@ public class AucklandMap extends GUI {
 	Graph graph;
 	double scalingFactorX;
 	double scalingFactorY;
+	double globalScalingFactor;
 	double minLatitude;
 	double minLongitude;
 
@@ -22,9 +23,12 @@ public class AucklandMap extends GUI {
 	
 	
 	public AucklandMap() {
-		this.graph = new Graph("data/test/roadDataTest.tab", 
-							  "data/test/nodeTest.tab", 
-							  "data/test/roadSegTest.tab"); //test files
+//		this.graph = new Graph("data/test/roadDataTest.tab", 
+//							  "data/test/nodeTest.tab", 
+//							  "data/test/roadSegTest.tab"); //test files
+		this.graph = new Graph("data/large/roadID-roadInfo.tab", 
+				  "data/large/nodeID-lat-lon.tab", 
+				  "data/large/roadSeg-roadID-length-nodeID-nodeID-coords.tab"); //full files
 		
 		calculateBoundingBox(getDrawingAreaDimension());
 		
@@ -38,53 +42,73 @@ public class AucklandMap extends GUI {
 
 
 	public void calculateBoundingBox(Dimension drawingArea) {
-		double locationMax_x = -180;
-		double locationMin_x = 180;
-		double locationMax_y = -180;
-		double locationMin_y = 180;
+		double maxLat = 0;
+		double minLat = 0;
+		double maxLon = 0;
+		double minLon = 0;
 		
 		//from StackOverflow Q# 1066589
 		
 		//iterate over nodes to find max and min coords
 		for (Map.Entry<Integer, Node> node: graph.nodes.entrySet()) {
-			double nodeX = node.getValue().coords.x;
-			double nodeY = node.getValue().coords.y;
+			double nodeLon = node.getValue().coords.x;
+			double nodeLat = node.getValue().coords.y;
 			
-			if (nodeX > locationMax_x) {
-				locationMax_x = nodeX;
+			if (maxLat == 0) {
+				maxLat = nodeLat;
+				minLat = nodeLat;
+				maxLon = nodeLon;
+				minLon = nodeLon;
 			}
 			
-			if (nodeX < locationMin_x) {
-				locationMin_x = nodeX;
-			}
-			
-			if (nodeY > locationMax_y) {
-				locationMax_y = nodeY;
-			}
-			
-			if (nodeX < locationMin_y) {
-				locationMin_y = nodeY;
+			else if (maxLat != 0) {
+				if (maxLat < nodeLat) {
+					maxLat = nodeLat;
+				}
+				if (minLat > nodeLat) {
+					minLat = nodeLat;
+				}
+				if (maxLon < nodeLon) {
+					maxLon = nodeLon;
+				}
+				if (minLon > nodeLon) {
+					minLon = nodeLon;
+				}
 			}
 			
 		}
 		
-		this.minLongitude = locationMin_x;
-		this.minLatitude = locationMin_y;
+		this.minLongitude = minLon;
+		this.minLatitude = minLat;
 		
-		this.scalingFactorX = drawingArea.width / (locationMax_x - locationMin_x);
-		this.scalingFactorY = drawingArea.height / (locationMax_y - locationMin_y);
+		this.scalingFactorX = drawingArea.width / (maxLon - minLon);
+		this.scalingFactorY = drawingArea.height / (maxLat - minLat);
+		this.globalScalingFactor = Math.min(scalingFactorX, scalingFactorY);
 		
+		System.out.println("Lat=" + minLat + "-" + maxLat + ", Lon=" + minLon + "-" + maxLon);
 	}
 
 	@Override
 	protected void redraw(Graphics g) {
-		// TODO Auto-generated method stub
 		for (Map.Entry<Integer, Node> node: graph.nodes.entrySet()) {
-			node.getValue().draw(g);
-//			node.getValue().draw(g, this.scalingFactorX, this.scalingFactorY, this.minLatitude, this.minLongitude);
-			System.out.println(node.getValue().x);
-			System.out.println(node.getValue().y);
+//			node.getValue().draw(g);
+			node.getValue().draw(g, getDrawingAreaDimension(), this.globalScalingFactor, this.minLatitude, this.minLongitude);
+//			System.out.println(node.getValue().mapPoint);
+//			System.out.println(node.getValue().y);
+			
+			
+			
 		}
+		
+		for (Map.Entry<Integer, Node> node: graph.nodes.entrySet()) {
+			for (Segment segment : node.getValue().outSegments) {
+				segment.draw(g, node.getValue().scaledPoint, graph.nodes.get(segment.nodeId2).scaledPoint);
+			}
+			for (Segment segment : node.getValue().inSegments) {
+				segment.draw(g, node.getValue().scaledPoint, graph.nodes.get(segment.nodeId2).scaledPoint);
+			}
+		}
+		
 	}
 
 
