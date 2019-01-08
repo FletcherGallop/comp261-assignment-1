@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Map;
 
-public class AucklandMap extends GUI {
+public class Assignment1 extends GUI {
 	Graph graph;
 	double scalingFactorX;
 	double scalingFactorY;
@@ -17,12 +17,12 @@ public class AucklandMap extends GUI {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new AucklandMap();
+		new Assignment1();
 	}
 	
 	
 	
-	public AucklandMap() {
+	public Assignment1() {
 //		this.graph = new Graph("data/test/roadDataTest.tab", 
 //							  "data/test/nodeTest.tab", 
 //							  "data/test/roadSegTest.tab"); //test files
